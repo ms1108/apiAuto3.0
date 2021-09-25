@@ -31,7 +31,7 @@ public class LoginChange extends DependChainChange {
                 GetSsoUrl getSsoUrl1 = JSONObject.parseObject(depend.toString(), GetSsoUrl.class);
                 GetSsoUrl getSsoUrl = invokeDependNewInstance(GetSsoUrl.class);
                 getSsoUrl.args.callback = callback;
-                return null;
+                return getSsoUrl;
             }
         });
         putDependChainDIY(IdentifyChain.class, new IdentifyChain() {
@@ -40,8 +40,7 @@ public class LoginChange extends DependChainChange {
                 Identifier identifier = invokeDependNewInstance(Identifier.class);
                 identifier.setUser_name(user_name);
                 identifier.setUser_pwd_md5(user_pwd_md5);
-                apiTest(identifier);
-                return null;
+                return identifier;
             }
         });
     }
